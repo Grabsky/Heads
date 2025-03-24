@@ -15,13 +15,18 @@
 package cloud.grabsky.heads;
 
 import cloud.grabsky.bedrock.BedrockPlugin;
+import cloud.grabsky.heads.object.EntityLootEntry;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.Listener;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import revxrsal.commands.Lamp;
 import revxrsal.commands.annotation.Command;
 import revxrsal.commands.bukkit.BukkitLamp;
 import revxrsal.commands.bukkit.actor.BukkitCommandActor;
 import revxrsal.commands.bukkit.annotation.CommandPermission;
+
+import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -77,6 +82,19 @@ public final class Heads extends BedrockPlugin {
         @CommandPermission("heads.command.reload")
         public String onReload(final @NotNull CommandSender sender) {
             return (instance.onReload() == true) ? "<dark_gray>› <gray>Plugin <gold>Heads<gray> has been reloaded." : "<dark_gray>› <red>An error occurred while reloading <gold>Heads<red> plugin.";
+        }
+
+        @Command("heads get")
+        @CommandPermission("heads.command.get")
+        public String onGet(final @NotNull Player sender, final @NotNull EntityType type) {
+            final NamespacedKey key = type.getKey();
+            // Sending error message if no head variants are found for the given entity type.
+            if (instance.getHeadsLoader().getEntries().containsKey(key) == false)
+                return "<dark_gray>› <red>No head variants found for <gold><lang:" + type.translationKey() + "><red>.";
+            // Iterating over all head variants and adding them to the sender's inventory.
+            instance.getHeadsLoader().getEntries().get(key).forEach(entry -> sender.getInventory().addItem(entry.item()));
+            // Sending success message to the sender.
+            return "<dark_gray>› <gray>You have received all head variants for <gold><lang:" + type.translationKey() + "><gray>.";
         }
 
     }
