@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-public final class Heads extends BedrockPlugin implements Listener {
+public final class Heads extends BedrockPlugin {
 
     @Getter(AccessLevel.PUBLIC)
     private static Heads instance;
@@ -48,6 +48,8 @@ public final class Heads extends BedrockPlugin implements Listener {
         this.headsLoader = new HeadsLoader(this);
         // Running the plugin reload logic.
         this.onReload();
+        // Registering event listeners.
+        this.getServer().getPluginManager().registerEvents(new HeadsListener(this), this);
         // Initializing Lamp.
         this.commands = BukkitLamp.builder(this)
                 .responseHandler(String.class, (value, context) -> {
