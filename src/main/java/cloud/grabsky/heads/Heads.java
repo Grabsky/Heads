@@ -15,7 +15,6 @@
 package cloud.grabsky.heads;
 
 import cloud.grabsky.bedrock.BedrockPlugin;
-import cloud.grabsky.heads.object.EntityLootEntry;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
@@ -25,8 +24,6 @@ import revxrsal.commands.annotation.Command;
 import revxrsal.commands.bukkit.BukkitLamp;
 import revxrsal.commands.bukkit.actor.BukkitCommandActor;
 import revxrsal.commands.bukkit.annotation.CommandPermission;
-
-import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
