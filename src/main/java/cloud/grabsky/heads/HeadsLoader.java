@@ -27,7 +27,6 @@ import cloud.grabsky.configuration.paper.adapter.PersistentDataTypeAdapterFactor
 import cloud.grabsky.heads.object.EntityLootContainer;
 import cloud.grabsky.heads.object.EntityLootEntry;
 import com.squareup.moshi.Moshi;
-import com.squareup.moshi.Types;
 import net.kyori.adventure.text.Component;
 import okio.BufferedSource;
 import okio.Okio;
@@ -36,7 +35,6 @@ import org.bukkit.inventory.ItemRarity;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,8 +61,11 @@ public final class HeadsLoader {
         // Trying...
         try {
             // Creating directory and default file.
-            if (directory.mkdirs() == true)
-                ensureResourceExistence(plugin, new File(directory, "default.json"));
+            if (directory.mkdirs() == true) {
+                ensureResourceExistence(plugin, new File(directory, "player.json"));
+                ensureResourceExistence(plugin, new File(directory, "passive.json"));
+                ensureResourceExistence(plugin, new File(directory, "aggressive.json"));
+            }
             // Listing files inside the directory.
             final @Nullable File[] files = directory.listFiles();
             // Returning amd logging a message if directory is empty.
