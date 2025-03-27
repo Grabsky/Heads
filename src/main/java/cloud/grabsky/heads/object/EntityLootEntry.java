@@ -20,6 +20,7 @@ import com.squareup.moshi.JsonDataException;
 import com.squareup.moshi.JsonReader;
 import com.squareup.moshi.JsonWriter;
 import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
@@ -56,6 +57,9 @@ public class EntityLootEntry {
 
     @Getter(AccessLevel.PUBLIC)
     protected @Nullable String message;
+
+    @Getter(AccessLevel.PUBLIC)
+    protected List<String> commands;
 
     @Getter(AccessLevel.PUBLIC)
     private @UnknownNullability ItemStack item;
@@ -108,8 +112,11 @@ public class EntityLootEntry {
 
     /* SERIALIZATION */
 
+    @SuppressWarnings("unchecked")
     public enum Factory implements JsonAdapter.Factory {
         INSTANCE; // SINGLETON
+
+        private static final Type LIST_STRING = Types.newParameterizedType(List.class, String.class);
 
         @Override
         public @Nullable JsonAdapter<EntityLootEntry> create(final @NotNull Type type, final @NotNull Set<? extends Annotation> annotations, final @NotNull Moshi moshi) {
@@ -118,7 +125,9 @@ public class EntityLootEntry {
             // Getting adapters...
             final var ChanceAdapter = moshi.adapter(Chance.class).nullSafe();
             final var MatcherAdapter = moshi.adapter(Matcher.class).nullSafe();
+            final var ListAdapter = moshi.adapter(LIST_STRING).nullSafe();
             final var ItemStackAdapter = moshi.adapter(ItemStack.class);
+
             // Constructing and returning the JsonAdapter for this type.
             return new JsonAdapter<>() {
 
@@ -136,6 +145,7 @@ public class EntityLootEntry {
                             case "matcher" -> result.matcher = MatcherAdapter.fromJson(in);
                             case "permission" -> result.permission = (in.peek() != JsonReader.Token.NULL) ? in.nextString() : in.nextNull();
                             case "message" -> result.message = (in.peek() != JsonReader.Token.NULL) ? in.nextString() : in.nextNull();
+                            case "commands" -> result.commands = (in.peek() != JsonReader.Token.NULL) ? (List<String>) ListAdapter.fromJson(in) : in.nextNull();
                             case "item" -> result.item = ItemStackAdapter.fromJson(in);
                         }
                     }

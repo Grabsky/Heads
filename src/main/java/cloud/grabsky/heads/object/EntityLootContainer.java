@@ -59,6 +59,9 @@ public final class EntityLootContainer {
     private String message;
 
     @Getter(AccessLevel.PUBLIC)
+    private List<String> commands;
+
+    @Getter(AccessLevel.PUBLIC)
     private Map<NamespacedKey, List<EntityLootEntry>> entities;
 
     /* SERIALIZATION */
@@ -66,6 +69,7 @@ public final class EntityLootContainer {
     public enum Factory implements JsonAdapter.Factory {
         INSTANCE; // SINGLETON
 
+        private static final Type LIST_STRING = Types.newParameterizedType(List.class, String.class);
         private static final Type MAP_STRING_ENTITY_LOOT_ENTRY = Types.newParameterizedType(Map.class, NamespacedKey.class, Types.newParameterizedType(List.class, EntityLootEntry.class));
 
         @Override @SuppressWarnings("unchecked")
@@ -75,6 +79,7 @@ public final class EntityLootContainer {
             // Getting adapters...
             final var ChanceAdapter = moshi.adapter(EntityLootEntry.Chance.class).nullSafe();
             final var MatcherAdapter = moshi.adapter(EntityLootEntry.Matcher.class).nullSafe();
+            final var ListAdapter = moshi.adapter(LIST_STRING).nullSafe();
             final var MapAdapter = moshi.adapter(MAP_STRING_ENTITY_LOOT_ENTRY);
             // Constructing and returning the JsonAdapter for this type.
             return new JsonAdapter<>() {
@@ -92,6 +97,7 @@ public final class EntityLootContainer {
                             case "default_matcher" -> result.defaultMatcher = MatcherAdapter.fromJson(in);
                             case "permission" -> result.permission = (in.peek() != JsonReader.Token.NULL) ? in.nextString() : in.nextNull();
                             case "message" -> result.message = (in.peek() != JsonReader.Token.NULL) ? in.nextString() : in.nextNull();
+                            case "commands" -> result.commands = (in.peek() != JsonReader.Token.NULL) ? (List<String>) ListAdapter.fromJson(in) : in.nextNull();
                             case "entities" -> result.entities = (Map<NamespacedKey, List<EntityLootEntry>>) MapAdapter.fromJson(in);
                         }
                     }
@@ -118,6 +124,10 @@ public final class EntityLootContainer {
                             // Setting default permission.
                             if (value.permission == null)
                                 value.permission = result.permission;
+                            // Setting default commands.
+                            if (value.commands == null || value.commands.isEmpty() == true)
+                                if (result.commands != null && result.commands.isEmpty() == false)
+                                    value.commands = result.commands;
                             // Setting default message.
                             if (value.message == null)
                                 value.message = result.message;

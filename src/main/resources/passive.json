@@ -17,6 +17,8 @@
     "permission": "",
     // Default message that will be sent to the player when they receive a head.
     "message": "<dark_gray>› <green>Congrats! <gray>You received <item><reset><gray> from the killed mob.",
+    // Default list of commands to be executed when player receives a head.
+    "commands": [],
     // List of entity definitions defined within this group.
     "entities": {
         "minecraft:allay": [

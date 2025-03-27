@@ -115,10 +115,19 @@ public final class HeadsListener implements Listener {
                 // Adding item to the drops.
                 event.getDrops().add(item);
                 // Optionally, sending message to the attacker.
-                if (event.getDamageSource().getCausingEntity() instanceof Player player)
+                if (event.getDamageSource().getCausingEntity() instanceof Player player) {
                     Message.of(entry.message())
                             .placeholder("item", Component.text("[", item.getItemMeta().itemName().color()).append(item.effectiveName().hoverEvent(item.asHoverEvent())).append(Component.text("]")))
                             .send(player);
+                    // Executing commands.
+                    if (entry.commands() != null) entry.commands().forEach(command -> {
+                        final String finalCommand = command
+                                .replace("<player>", player.getName())
+                                .replace("<entity_identifier>", (variant != null) ? (key.asString() + "/" + variant).replace("_", "-") : key.asString().replace("_", "-"));
+                        plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), finalCommand);
+                    });
+                }
+
             }
         }
     }
