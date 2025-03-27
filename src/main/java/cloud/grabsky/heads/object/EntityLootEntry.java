@@ -60,6 +60,12 @@ public class EntityLootEntry {
     @Getter(AccessLevel.PUBLIC)
     private @UnknownNullability ItemStack item;
 
+    // This NamespacedKey is used to match any attacker or damage type.
+    private static final NamespacedKey ANY = new NamespacedKey("minecraft", "any");
+
+    // This NamespacedKey is used to match unspecified / null attacker or damage type.
+    private static final NamespacedKey UNSPECIFIED = new NamespacedKey("minecraft", "unspecified");
+
     @Accessors(fluent = true)
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Chance {
@@ -92,8 +98,8 @@ public class EntityLootEntry {
 
         public boolean matches(final @Nullable String variant, final @Nullable NamespacedKey attacker, final @Nullable NamespacedKey damageType) {
             final boolean isVariantMatch = (this.variant == null) || Objects.equals(this.variant, variant);
-            final boolean isAttackerMatch = (attackers == null || attacker == null) || attackers.contains(attacker);
-            final boolean isDamageMatch = (damageTypes == null || damageType == null) || damageTypes.contains(damageType);
+            final boolean isAttackerMatch = (this.attackers != null) && ((this.attackers.contains(ANY) == true || this.attackers.contains(attacker) == true) || (this.attackers.contains(UNSPECIFIED) == false && attacker == null));
+            final boolean isDamageMatch = (this.damageTypes != null) && ((this.damageTypes.contains(ANY) == true || this.damageTypes.contains(damageType) == true) || (this.damageTypes.contains(UNSPECIFIED) == false && damageType == null));
             // Returning whether provided values match.
             return isVariantMatch && isAttackerMatch && isDamageMatch;
         }

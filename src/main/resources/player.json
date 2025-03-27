@@ -6,15 +6,13 @@
         "per_looting_level": 0.0
     },
     "default_matcher": {
-        // Default variant to match. Omitting this field or setting to null will match any variant.
-        "variant": null,
-        // Default list of attackers that can initiate the head drop. Omitting this field or setting to null will match any attacker.
+        // Default list of attackers that can initiate the head drop.
         "attackers": ["minecraft:player"],
-        // Default list of damages that can initiate the head drop. Omitting this field or setting to an null will match any damage type.
+        // Default list of damages that can initiate the head drop.
         "damage_types": ["minecraft:player_attack"]
     },
     // Default permission required to initiate the head drop. Setting to "" will disable the condition check.
-    "permission": "heads.plugin.can_receive_drops",
+    "permission": "",
     // Default message that will be sent to the player when they receive a head.
     "message": "<dark_gray>› <green>Congrats! <gray>You received <item><reset><gray> from the killed player.",
     // List of entity definitions defined within this group.
