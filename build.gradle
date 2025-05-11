@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "cloud.grabsky"
-version = "1.21.4-${System.getenv("GITHUB_RUN_NUMBER") ?: "DEV"}"
+version = "1.21.5-${System.getenv("GITHUB_RUN_NUMBER") ?: "DEV"}"
 
 repositories {
     mavenLocal()
@@ -25,7 +25,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.36")
     annotationProcessor("org.projectlombok:lombok:1.18.36")
     // Paper (Forked; contains VaultStateChangeEvent)
-    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.5-R0.1-SNAPSHOT")
     // Dependencies (My Libraries) (Shaded)
     implementation("cloud.grabsky:bedrock:1.21-64")
     implementation("cloud.grabsky:configuration-paper:1.21.4-53")
@@ -50,7 +50,7 @@ tasks {
 
 paper {
     main = "cloud.grabsky.heads.Heads"
-    apiVersion = "1.21.4"
+    apiVersion = "1.21.5"
 }
 
 /* FOR GITHUB ACTIONS */
