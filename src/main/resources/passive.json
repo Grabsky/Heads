@@ -264,11 +264,34 @@
         ],
         "minecraft:chicken": [
             {
+                "matcher": { "variant": "minecraft:temperate" },
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
                         "name": { "translate": "item.firedot.chicken_head.temperate", "color": "green", "fallback": "Chicken Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/1638469a599ceef7207537603248a9ab11ff591fd378bea4735b346a7fae893",
+                        "note_block_sound": "minecraft:entity.chicken.ambient"
+                    }
+                }
+            },
+            {
+                "matcher": { "variant": "minecraft:warm" },
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.chicken_head.temperate", "color": "green", "fallback": "Chicken Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/c51c74f6d1ed6befbe6376ca322b53bb6f68e11d1ce39c6bcedea29825993693",
+                        "note_block_sound": "minecraft:entity.chicken.ambient"
+                    }
+                }
+            },
+            {
+                "matcher": { "variant": "minecraft:cold" },
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.chicken_head.temperate", "color": "green", "fallback": "Chicken Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/71753dcf9ab37874c8d578e1559b383cb1d1f0bb3b29e6c9605f3a817be8fdc7",
                         "note_block_sound": "minecraft:entity.chicken.ambient"
                     }
                 }
@@ -289,12 +312,34 @@
         ],
         "minecraft:cow": [
             {
-                "matcher": { "variant": null },
+                "matcher": { "variant": "minecraft:temperate" },
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
                         "name": { "translate": "item.firedot.cow_head.temperate", "color": "green", "fallback": "Cow Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/7dfa0ac37baba2aa290e4faee419a613cd6117fa568e709d90374753c032dcb0",
+                        "note_block_sound": "minecraft:entity.cow.ambient"
+                    }
+                }
+            },
+            {
+                "matcher": { "variant": "minecraft:warm" },
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.cow_head.temperate", "color": "green", "fallback": "Cow Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/23b3376faf281c14ba472d2e7f6b6d0169e4bc2374835a9f8d0788e04d81343d",
+                        "note_block_sound": "minecraft:entity.cow.ambient"
+                    }
+                }
+            },
+            {
+                "matcher": { "variant": "minecraft:cold" },
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.cow_head.temperate", "color": "green", "fallback": "Cow Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/ad068885d2dfa3a309363af0a87dca6fbf629f713074f9686219d7ba7af7008d",
                         "note_block_sound": "minecraft:entity.cow.ambient"
                     }
                 }
@@ -674,11 +719,34 @@
         ],
         "minecraft:pig": [
             {
+                "matcher": { "variant": "minecraft:temperate" },
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
                         "name": { "translate": "item.firedot.pig_head.temperate", "color": "green", "fallback": "Pig Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/621668ef7cb79dd9c22ce3d1f3f4cb6e2559893b6df4a469514e667c16aa4",
+                        "note_block_sound": "minecraft:entity.pig.ambient"
+                    }
+                }
+            },
+            {
+                "matcher": { "variant": "minecraft:warm" },
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.pig_head.temperate", "color": "green", "fallback": "Pig Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/7beba1a2d56e84f8e51fed6659f2cb7c14fed43859af584737897bf70c039475",
+                        "note_block_sound": "minecraft:entity.pig.ambient"
+                    }
+                }
+            },
+            {
+                "matcher": { "variant": "minecraft:cold" },
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.pig_head.temperate", "color": "green", "fallback": "Pig Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/ba18d4043cd6c903866788914fd534315281af9f259e34837e3e175e545c2ede",
                         "note_block_sound": "minecraft:entity.pig.ambient"
                     }
                 }
