@@ -1,47 +1,46 @@
 plugins {
     id("java-library")
-    id("net.minecrell.plugin-yml.paper") version "0.6.0"
     id("com.gradleup.shadow") version "8.3.5"
+    id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("de.eldoria.plugin-yml.paper") version "0.7.1"
 }
 
 group = "cloud.grabsky"
-version = "1.21.5-${System.getenv("GITHUB_RUN_NUMBER") ?: "DEV"}"
+version = "1.21.6-${System.getenv("GITHUB_RUN_NUMBER") ?: "DEV"}"
 
 repositories {
     mavenLocal()
     mavenCentral()
     // Repository containing the Paper API.
     maven { url = "https://repo.papermc.io/repository/maven-public/" }
-    // Repository containing the 'bedrock' dependency.
-    maven { url = "https://maven.pkg.github.com/Grabsky/bedrock"; fillCredentials(it) }
-    // Repository containing the 'configuration' dependency.
-    maven { url = "https://maven.pkg.github.com/Grabsky/configuration"; fillCredentials(it) }
-    // Repository containing the 'commands' dependency.
-    maven { url = "https://maven.pkg.github.com/Grabsky/commands"; fillCredentials(it) }
+    // Repository containing all my libraries.
+    maven { url = "https://vela.grabsky.workers.dev/releases" }
 }
 
 dependencies {
     // Lombok
     compileOnly("org.projectlombok:lombok:1.18.36")
     annotationProcessor("org.projectlombok:lombok:1.18.36")
-    // Paper (Forked; contains VaultStateChangeEvent)
-    compileOnly("io.papermc.paper:paper-api:1.21.5-R0.1-SNAPSHOT")
-    // Dependencies (My Libraries) (Shaded)
-    implementation("cloud.grabsky:bedrock:1.21-64")
-    implementation("cloud.grabsky:configuration-paper:1.21.4-53")
-    // Lamp (Command Framework)
-    implementation("io.github.revxrsal:lamp.common:4.0.0-rc.9")
-    implementation("io.github.revxrsal:lamp.bukkit:4.0.0-rc.9")
-    implementation("io.github.revxrsal:lamp.brigadier:4.0.0-rc.9")
+    // Paper API
+    compileOnly("io.papermc.paper:paper-api:1.21.6-R0.1-SNAPSHOT")
+    // Dependencies (My Libraries)
+    paperLibrary("cloud.grabsky:bedrock:1.21-67")
+    paperLibrary("cloud.grabsky:configuration-paper:1.21.4-54")
+    // Dependencies (Lamp)
+    paperLibrary("io.github.revxrsal:lamp.common:4.0.0-rc.12")
+    paperLibrary("io.github.revxrsal:lamp.bukkit:4.0.0-rc.12")
+    paperLibrary("io.github.revxrsal:lamp.brigadier:4.0.0-rc.12")
 }
 
 tasks {
+    runServer {
+        minecraftVersion("1.21.6")
+    }
     shadowJar {
         shadowJar.archiveFileName = "${rootProject.name}-${project.version}.jar"
     }
     compileJava {
         options.fork = true
-        options.compilerArgs += "--enable-preview"
         // Setting compatibility to Java 21 (above should work too).
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
@@ -50,7 +49,9 @@ tasks {
 
 paper {
     main = "cloud.grabsky.heads.Heads"
+    loader = "cloud.grabsky.heads.Heads\$PluginLoader"
     apiVersion = "1.21.5"
+    generateLibrariesJson = true
 }
 
 /* FOR GITHUB ACTIONS */
@@ -61,13 +62,4 @@ tasks.register("release") {
 
 tasks.register("tag") {
     doLast { print(version) }
-}
-
-/* UTILITY METHODS */
-
-private final def fillCredentials(final MavenArtifactRepository repository) {
-    repository.credentials {
-        username = findProperty("gpr.actor") ?: System.getenv("GITHUB_ACTOR")
-        password = findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
-    }
 }
