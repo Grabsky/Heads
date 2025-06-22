@@ -1,27 +1,38 @@
+// This loot container is responsible for handling player head drops.
+// - MiniMessage: https://docs.advntr.dev/minimessage/format.html
 {
-    "default_chance": {
-        // Base chance for item to drop.
-        "base": 1.0,
-        // Additional chance added for each level of Looting enchantment.
-        "per_looting_level": 0.0
-    },
+    // Matcher is a set of properties that decides whether head can be dropped upon entity death.
+    // Default matcher will be used for entries that do not specify their own matcher.
     "default_matcher": {
-        // Default list of attackers that can initiate the head drop.
+        // Entity variant to match. Omitting this field or setting to null will match any variant.
+        // - Reference: https://minecraft.wiki/w/Mob_variant (Data values are listed separately for each entity)
+        // - Example: "minecraft:warm" (Valid for Frogs, Cows, Chickens and Pigs)
+        "variant": null,
+        // List of attackers that can initiate the head drop.
+        // - Reference: https://minecraft.wiki/w/Entity#Types_of_entities
         "attackers": ["minecraft:player"],
-        // Default list of damages that can initiate the head drop.
+        // List of damages that can initiate the head drop.
+        // - Reference: https://minecraft.wiki/w/Damage_type
         "damage_types": ["minecraft:player_attack"]
+    },
+    // Percentage chance for the head to drop. This is applied only for matched entities.
+    "default_chance": {
+        // Examples: 1.0 = 100%, 0.1 = 10%, 0.01 = 1%
+        "base": 1.0,
+        // Additional chance to be applied on top of the base chance, multiplied by the level of "Looting" enchantment on player's tool.
+        "per_looting_level": 0.0
     },
     // Default permission required to initiate the head drop. Setting to "" will disable the condition check.
     "permission": "",
-    // Default message that will be sent to the player when they receive a head.
+    // Default message that will be sent to the player when they receive a head. Placeholders: [item]
     "message": "<dark_gray>› <green>Congrats! <gray>You received <item><reset><gray> from the killed player.",
-    // Default list of commands to be executed when player receives a head.
+    // Default list of commands to be executed when player receives a head. Placeholders: [player, entity_identifier]
     "commands": [],
     // List of entity definitions defined within this group.
     "entities": {
         "minecraft:player": [
             {
-                // Texture will be automatically filled by the plugin.
+                // When the texture is left unspecified, player's skin texture will be used.
                 "item": { "material": "minecraft:player_head" }
             }
         ]
