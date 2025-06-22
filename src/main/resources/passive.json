@@ -452,6 +452,19 @@
                 }
             }
         ],
+        "minecraft:happy_ghast": [
+            {
+                "chance": { "base": 0.1, "per_looting_level": 0.025 },
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.happy_ghast", "color": "green", "fallback": "Happy Ghast Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/a1a36cb93d01675c4622dd5c8d872110911ec12c372e89afa8ba03862867f6fb",
+                        "note_block_sound": "minecraft:entity.happy_ghast.ambient"
+                    }
+                }
+            }
+        ],
         "minecraft:horse": [
             {
                 "matcher": { "variant": "white" },

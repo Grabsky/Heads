@@ -22,8 +22,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.AbstractArrow;
-import org.bukkit.entity.AbstractCow;
 import org.bukkit.entity.Axolotl;
 import org.bukkit.entity.Cat;
 import org.bukkit.entity.Chicken;
