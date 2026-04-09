@@ -4,8 +4,11 @@ plugins {
     id("de.eldoria.plugin-yml.paper") version "0.9.0"
 }
 
+final String VERSION = "26.1.1"
+final String RUN_NUMBER = System.getenv("GITHUB_RUN_NUMBER") ?: "DEV"
+
 group = "cloud.grabsky"
-version = "26.1.1-${System.getenv("GITHUB_RUN_NUMBER") ?: "DEV"}"
+version = "$VERSION+$RUN_NUMBER"
 
 repositories {
     mavenLocal()
