@@ -101,7 +101,7 @@
                 }
             },
             {
-                "matcher": { "variant": "blue" }, "chance": { "base": 1.0 },
+                "matcher": { "variant": "blue" }, "chance": { "base": 1.0, "per_looting_level": 0.0 },
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
@@ -136,13 +136,25 @@
                 }
             }
         ],
+        "minecraft:camel_husk": [
+            {
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.camel_husk_head", "color": "red", "fallback": "Camel Husk Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/3bd7a92a6f67b7500d16c4e12f28058ec2859311556ba03be2d1f581170f2db6",
+                        "note_block_sound": "minecraft:entity.camel_husk.ambient"
+                    }
+                }
+            }
+        ],
         "minecraft:cat": [
             {
                 "matcher": { "variant": "minecraft:tabby" }, "chance": { "base": 0.1, "per_looting_level": 0.025 },
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
-                        "name": { "translate": "item.firedot.cat_head", "color": "green", "fallback": "Cat Head" },
+                        "name": { "translate": "item.firedot.cat_head.tabby", "color": "green", "fallback": "Cat Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/de28d30db3f8c3fe50ca4f26f3075e36f003ae8028135a8cd692f24c9a98ae1b",
                         "note_block_sound": "minecraft:entity.cat.ambient"
                     }
@@ -308,11 +320,10 @@
         ],
         "minecraft:cod": [
             {
-                "matcher": { "variant": "normal" },
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
-                        "name": { "translate": "item.firedot.cod_head.normal", "color": "green", "fallback": "Cod Head" },
+                        "name": { "translate": "item.firedot.cod_head", "color": "green", "fallback": "Cod Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/7892d7dd6aadf35f86da27fb63da4edda211df96d2829f691462a4fb1cab0",
                         "note_block_sound": "minecraft:entity.cod.flop"
                     }
@@ -467,9 +478,9 @@
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
-                        "name": { "translate": "item.firedot.happy_ghast", "color": "green", "fallback": "Happy Ghast Head" },
-                        "skull_texture": "http://textures.minecraft.net/texture/a1a36cb93d01675c4622dd5c8d872110911ec12c372e89afa8ba03862867f6fb",
-                        "note_block_sound": "minecraft:entity.happy_ghast.ambient"
+                        "name": { "translate": "item.firedot.happy_ghast_head", "color": "green", "fallback": "Happy Ghast Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/82698aa7274ee241d31362e2faa48cfa733d25010516568d40f3f967247da11b",
+                        "note_block_sound": "minecraft:entity.happy_ghast_head.ambient"
                     }
                 }
             }
@@ -597,6 +608,18 @@
                         "name": { "translate": "item.firedot.mule_head", "color": "green", "fallback": "Mule Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/46dcda265e57e4f51b145aacbf5b59bdc6099ffd3cce0a661b2c0065d80930d8",
                         "note_block_sound": "minecraft:entity.mule.ambient"
+                    }
+                }
+            }
+        ],
+        "minecraft:nautilus": [
+            {
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.nautilus_head", "color": "green", "fallback": "Nautilus Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/3bb340dd3302615348de5162fe1670b9c5c9c616cd92d2de9d8398cb33e842ae",
+                        "note_block_sound": "minecraft:entity.nautilus.ambient"
                     }
                 }
             }
@@ -871,7 +894,7 @@
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
-                        "name": { "translate": "item.firedot.rabbit_head.the_killer_bunny", "color": "green", "fallback": "Rabbit Head" },
+                        "name": { "translate": "item.firedot.rabbit_head.the_killer_bunny", "color": "red", "fallback": "Rabbit Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/3a35cd1f018aaf643d7c2e8a1ef983e9d45b1b06495383752d6c1a423dd995e4",
                         "note_block_sound": "minecraft:entity.rabbit.ambient"
                     }
@@ -1270,11 +1293,11 @@
                 }
             },
             {
-                "matcher": { "variant": "minecraft:snowy" }, "chance": { "base": 0.1, "per_looting_level": 0.025 },
+                "matcher": { "variant": "minecraft:snow" }, "chance": { "base": 0.1, "per_looting_level": 0.025 },
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
-                        "name": { "translate": "item.firedot.villager_head.snowy", "color": "green", "fallback": "Villager Head" },
+                        "name": { "translate": "item.firedot.villager_head.snow", "color": "green", "fallback": "Villager Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/3cc02372f6292a131aa035cef8e52475efa966352e05c2dba374f1309e569dbb",
                         "note_block_sound": "minecraft:entity.villager.ambient"
                     }
@@ -1411,7 +1434,7 @@
                     "material": "minecraft:player_head",
                     "meta": {
                         "name": { "translate": "item.firedot.zombie_horse_head", "color": "red", "fallback": "Zombie Horse Head" },
-                        "skull_texture": "http://textures.minecraft.net/texture/f896a1dbde1a19540ce7336c6c94f59652aa98bb1068b2ef8c8fa6ef85804f57",
+                        "skull_texture": "http://textures.minecraft.net/texture/171ce469cba4426c811f69be5d958a09bfb9b1b2bb649d3577a0c2161ad2f524",
                         "note_block_sound": "minecraft:entity.zombie_horse.ambient"
                     }
                 }

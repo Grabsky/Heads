@@ -97,8 +97,7 @@
                 "item": {
                     "material": "minecraft:creeper_head",
                     "meta": {
-                        "name": { "translate": "item.firedot.creeper_head", "color": "red", "fallback": "Creeper Head" },
-                        "note_block_sound": "minecraft:entity.creeper.ambient"
+                        "name": { "translate": "item.firedot.creeper_head", "color": "red", "fallback": "Creeper Head" }
                     }
                 }
             }
@@ -169,7 +168,7 @@
                     "material": "minecraft:player_head",
                     "meta": {
                         "name": { "translate": "item.firedot.ghast_head", "color": "red", "fallback": "Ghast Head" },
-                        "skull_texture": "http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0",
+                        "skull_texture": "http://textures.minecraft.net/texture/504843421c218d0634455fdb1a6c5f7ae5b85098a50b12b9ed9d9310c84dc61b",
                         "note_block_sound": "minecraft:entity.ghast.ambient"
                     }
                 }
@@ -219,6 +218,18 @@
                         "name": { "translate": "item.firedot.magma_cube_head", "color": "red", "fallback": "Magma Cube Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/38957d5023c937c4c41aa2412d43410bda23cf79a9f6ab36b76fef2d7c429",
                         "note_block_sound": "minecraft:entity.magma_cube.squish"
+                    }
+                }
+            }
+        ],
+        "minecraft:parched": [
+            {
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.parched_head", "color": "red", "fallback": "Parched Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/24aeceff5f26dd8413c5c03547c234ac03108d187af0b9cd834a8ce12598591c",
+                        "note_block_sound": "minecraft:entity.parched.ambient"
                     }
                 }
             }
@@ -484,11 +495,11 @@
                 }
             },
             {
-                "matcher": { "variant": "minecraft:snowy" }, "chance": { "base": 0.1, "per_looting_level": 0.025 },
+                "matcher": { "variant": "minecraft:snow" }, "chance": { "base": 0.1, "per_looting_level": 0.025 },
                 "item": {
                     "material": "minecraft:player_head",
                     "meta": {
-                        "name": { "translate": "item.firedot.zombie_villager_head.snowy", "color": "red", "fallback": "Zombie Villager Head" },
+                        "name": { "translate": "item.firedot.zombie_villager_head.snow", "color": "red", "fallback": "Zombie Villager Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/ef12b7b53001ef851719fdf8c088de03b11d4ae43f6ff53ac5a267d24df1dc60",
                         "note_block_sound": "minecraft:entity.zombie_villager.ambient"
                     }
@@ -525,6 +536,18 @@
                         "name": { "translate": "item.firedot.zombified_piglin_head", "color": "red", "fallback": "Zombified Piglin Head" },
                         "skull_texture": "http://textures.minecraft.net/texture/7eabaecc5fae5a8a49c8863ff4831aaa284198f1a2398890c765e0a8de18da8c",
                         "note_block_sound": "minecraft:entity.zombified_piglin.ambient"
+                    }
+                }
+            }
+        ],
+        "minecraft:zombie_nautilus": [
+            {
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.zombie_nautilus_head", "color": "red", "fallback": "Zombie Nautilus Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/fd9a933376da44c3391307cb9f4cf03f16f3a54f495fd5a11bad8a373f9d5720",
+                        "note_block_sound": "minecraft:entity.zombie_nautilus.ambient"
                     }
                 }
             }
