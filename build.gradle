@@ -28,7 +28,7 @@ dependencies {
     // https://github.com/Grabsky/bedrock
     paperLibrary("cloud.grabsky:bedrock:1.21.X-72")
     // https://github.com/Grabsky/configuration
-    paperLibrary("cloud.grabsky:configuration-paper:1.21.4-58")
+    paperLibrary("cloud.grabsky:configuration-paper:1.21.4-59")
     // https://github.com/Revxrsal/Lamp
     paperLibrary("io.github.revxrsal:lamp.common:4.0.0-rc.16")
     paperLibrary("io.github.revxrsal:lamp.bukkit:4.0.0-rc.16")
