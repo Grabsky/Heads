@@ -1153,6 +1153,18 @@
                 }
             }
         ],
+        "minecraft:sulfur_cube": [
+            {
+                "item": {
+                    "material": "minecraft:player_head",
+                    "meta": {
+                        "name": { "translate": "item.firedot.sulfur_cube", "color": "green", "fallback": "Sulfur Cube Head" },
+                        "skull_texture": "http://textures.minecraft.net/texture/f0d9056ec6db388af12304ef96ffdc8228dcf368ab255323258b716f990b4ab",
+                        "note_block_sound": "minecraft:entity.sulfur_cube.ambient"
+                    }
+                }
+            }
+        ],
         "minecraft:tadpole": [
             {
                 "item": {
