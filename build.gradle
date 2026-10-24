@@ -1,16 +1,16 @@
 plugins {
     id("java-library")
     // https://github.com/jpenilla/run-task
-    id("xyz.jpenilla.run-paper") version "3.0.2"
+    id("xyz.jpenilla.run-paper") version "3.1.0"
     // https://github.com/eldoriarpg/plugin-yml
     id("de.eldoria.plugin-yml.paper") version "0.9.0"
 }
 
-final String VERSION = "26.1+"
+final String VERSION = "26.3"
 final String RUN_NUMBER = System.getenv("GITHUB_RUN_NUMBER") ?: "DEV"
 
 group = "cloud.grabsky"
-version = "$VERSION+$RUN_NUMBER"
+version = "${VERSION}_${RUN_NUMBER}"
 
 repositories {
     mavenLocal()
@@ -23,23 +23,23 @@ repositories {
 
 dependencies {
     // https://github.com/projectlombok/lombok
-    compileOnly("org.projectlombok:lombok:1.18.46")
-    annotationProcessor("org.projectlombok:lombok:1.18.46")
+    compileOnly("org.projectlombok:lombok:1.18.48")
+    annotationProcessor("org.projectlombok:lombok:1.18.48")
     // https://github.com/PaperMC/Paper
-    compileOnly("io.papermc.paper:paper-api:26.2.build.+")
+    compileOnly("io.papermc.paper:paper-api:26.3.build.+")
     // https://github.com/Grabsky/bedrock
     paperLibrary("cloud.grabsky:bedrock:1.21.X-72")
     // https://github.com/Grabsky/configuration
     paperLibrary("cloud.grabsky:configuration-paper:1.21.4-59")
     // https://github.com/Revxrsal/Lamp
-    paperLibrary("io.github.revxrsal:lamp.common:4.0.0-rc.17")
-    paperLibrary("io.github.revxrsal:lamp.bukkit:4.0.0-rc.17")
-    paperLibrary("io.github.revxrsal:lamp.brigadier:4.0.0-rc.17")
+    paperLibrary("io.github.revxrsal:lamp.common:4.0.0")
+    paperLibrary("io.github.revxrsal:lamp.bukkit:4.0.0")
+    paperLibrary("io.github.revxrsal:lamp.brigadier:4.0.0")
 }
 
 tasks {
     runServer {
-        minecraftVersion("26.1.2")
+        minecraftVersion("26.3")
     }
 }
 
@@ -50,7 +50,7 @@ java {
 paper {
     main = "cloud.grabsky.heads.Heads"
     loader = "cloud.grabsky.heads.Heads\$PluginLoader"
-    apiVersion = "26.1"
+    apiVersion = "26.3"
     generateLibrariesJson = true
 }
 
@@ -58,4 +58,4 @@ paper {
 tasks.register("getRelease", () -> print("$VERSION #$RUN_NUMBER"))
 
 // Returns formatted tag name. (for GitHub Actions)
-tasks.register("getTag", () -> print("$VERSION+$RUN_NUMBER"))
+tasks.register("getTag", () -> print("${VERSION}_${RUN_NUMBER}"))
