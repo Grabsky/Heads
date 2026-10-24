@@ -1,4 +1,4 @@
-// This loot container is responsible for handling player head drops.
+// This loot container is responsible for handling head drops.
 // - MiniMessage: https://docs.advntr.dev/minimessage/format.html
 {
     // Matcher is a set of properties that decides whether head can be dropped upon entity death.
@@ -11,7 +11,7 @@
         // List of attackers that can initiate the head drop.
         // - Reference: https://minecraft.wiki/w/Entity#Types_of_entities
         "attackers": ["minecraft:player"],
-        // List of damages that can initiate the head drop.
+        // List of damage types that can initiate the head drop.
         // - Reference: https://minecraft.wiki/w/Damage_type
         "damage_types": ["minecraft:player_attack"]
     },
